@@ -56,6 +56,26 @@ and how-to steps, Google style wins.
 The common thread: a specific person who did a specific thing and has a view about it. That
 is the part a model can't fake and the part a reader is looking for.
 
+## When the author's own samples run out
+
+`voice.md` comes from a few essays and one reference site. When a task needs something it
+doesn't cover, such as a news story, a README, a talk abstract or a register it doesn't
+describe, copy the writers below for that kind of piece. The author's hard rules still apply
+(no dashes, no invented facts, sentence-case headings). This list fills gaps in `voice.md`;
+it doesn't override it.
+
+| Kind of piece | Writers to copy | The moves |
+|---|---|---|
+| News report | Reuters and AP wire style. For technical news analysis, Jonathan Corbet at LWN.net | The news goes in the first sentence. Every fact has a named source: "said" for people, "found" or "reported" for a study or document. No adjectives that judge. Short paragraphs. Only quote what someone said better than you could paraphrase it. Headlines are sentence case, a full sentence with a verb, and true without the story. For a study, say who made it, who paid for it, how big it was and what it can't show. With no one to quote, attribute to the document and don't invent a reaction. Numbers follow the publication's style (AP: "Oct. 1", "percent"), which wins over the Google numeral rule. |
+| Column or opinion | Paul Ford; Charity Majors; John Gruber at his best | One argument, said in the first few paragraphs. A personal stake, said once. Concrete evidence, then a clear verdict. Dry humor allowed. |
+| Essay or blog post | Martin Fowler, Paul Graham, Julia Evans, Dan Luu | See above. Open on a situation, follow one idea to its end, stop. |
+| Reference article or explainer | Fowler's long-form articles; Julia Evans; Stripe's API docs | Define the term once and plainly. One worked example, then the general rule. State limits and failure cases. |
+| README, how-to, tutorial | Google developer style; Daniele Procida's Diátaxis | Say what kind of document it is: a tutorial, a how-to, reference or an explanation. Don't mix them. Numbered steps start with a verb. Show expected output. |
+| Release notes, changelog | Simon Willison's release notes; the Keep a Changelog format | What changed, who it affects, what to do. Link the issue. No "exciting". |
+
+If you're unsure how one of these writers would handle something, ask what a careful expert
+on the subject would write for a reader who is short of time. That is usually the answer.
+
 ## Moves that make prose read as human and intelligent
 
 1. **Lead with the claim, or with a scene.** Not with context-setting ("In today's

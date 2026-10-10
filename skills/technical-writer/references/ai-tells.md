@@ -68,6 +68,41 @@ Intensifiers belong here too: truly, incredibly, deeply, genuinely, fundamentall
 remarkably. And the promotional register: "game-changing", "cutting-edge", "unlock",
 "empower", "elevate your workflow".
 
+## Current-model tells (Graphite, October 2026)
+
+Graphite compared about 10,000 topics, each written by a human (before ChatGPT) and by ten
+models. It counted words, phrases and frames that a model uses at least twice as often as
+people do [Q, vendor study]. Claude Opus 5.5, which may be the model drafting this, scored
+highest on these. The number is how many times more often the model uses it than people do:
+
+- "this matters" (116x), "why _ matters" (92x), "is more than a _, it" (98x), "matters
+  most" (12x)
+- "looking ahead, the" (40x), "rather than simply" (32x), "adds another layer" (27x), "what
+  comes next" (24x), "just as important" (13x), "not only about" (13x)
+- Adjectives: dependable (23x), steady (11x), thoughtful (9x), meaningful (8x)
+- Helpfulness talk, which went up from Opus 5 to 5.5: "is especially helpful", "can help
+  you", "makes it easier", "helps you avoid"
+- Superlatives, compared with GPT-6 Astra: "one of the best _ about", "perhaps the most", "the
+  most powerful", "the most popular"
+- "does not establish", "may provide", "not necessarily", "not simply": Opus 5.5 uses these
+  far more often than Astra
+
+Two findings change the advice:
+
+1. **The em dash is no longer the main signal.** Opus 5.5 uses 0.015 per 1,000 words, down
+   99% from Opus 5. GPT-6 Astra uses about an eighth of the human rate. A draft with no em
+   dashes can still be machine prose. The author still bans them, but don't count their
+   absence as a pass.
+2. **The tells move.** Opus 5 used "is genuinely", "matters enormously" and "remarkably".
+   Opus 5.5 mostly dropped those and picked up the helpfulness phrases. Each fix pushes the
+   habit somewhere else. That is why the deep tells above come first.
+
+"In practice" (7x) and "instead, it" (8x) are on the list too, but good technical writers use
+both all the time. The linter doesn't flag them. Notice when they become a habit.
+
+Caveats: Graphite sells SEO and "AI search" services. The human articles predate ChatGPT, so
+some of the gap comes from era and topic. A Claude model judged the "mannered prose" scores.
+
 ## Structure and formatting tells
 
 - Bullets where an argument should be. Bullets with a bold lead ("**Speed:** ...") stacked in
@@ -124,4 +159,7 @@ judgement.
 - Abdulhai et al. 2026, arXiv:2603.18161 (search-summary only; not verified at source).
 - Wikipedia: "Signs of AI writing" (WikiProject AI Cleanup), read 2026-10.
 - The Atlantic, July 2026, on the "it's not X, it's Y" tic, via aiweekly.co (secondary).
+- Graphite. "AI Tells: Opus 5.5 Update", 2026-10-01.
+  graphite.io/five-percent/research/ai-tells-opus-5-5-update. Reported by Gizmodo, "'This
+  Matters': Researchers Identify Thousands of New Tells in AI Writing", 2026-10-02.
 - Pangram Labs. "DAMAGE: Detecting Adversarially Modified AI Generated Text." arXiv:2501.03437

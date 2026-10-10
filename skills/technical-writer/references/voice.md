@@ -17,19 +17,20 @@ interested in the fact than in the phrasing.
 | | Essay / blog post | Reference / technical article | News or column (newspaper) |
 |---|---|---|---|
 | Person | "I" for self, "we" for the industry | "you" for the reader; "we" for first-hand stories | Third person for reporting; "I" only in a signed column |
-| Opening | A scene: a time, a place, a small concrete moment | The claim, or a concrete hook a cold reader follows in two sentences | The news: who, what, when, why it matters, in the first paragraph |
+| Opening | A scene: a time, a place, a small concrete moment. Only a real one; with no scene to hand, open on the claim | The claim, or a concrete hook a cold reader follows in two sentences | The news: who did what, when, and the consequence for the reader, in the first paragraph |
 | Rhythm | Shorter and warmer; a short line is allowed to land a feeling | Varied; long sentences carry reasoning, a short one only for a verdict | Short paragraphs, one fact or quote each |
-| Closing | Call back to the opening image | The rule, stated plainly and actionably | The next thing to watch, or the last relevant fact |
+| Closing | Call back to the opening image | The rule, stated plainly and actionably | The last relevant fact, or a next event only if a source names it |
 | Links | Few or none | Name the book or author in prose; cite every claim | Attribute every fact to a named source |
 
-The news register is inferred from standard newsroom practice, not from the author's
-samples. Ask for a sample of the author's newspaper pieces when one is available and update
-this table.
+The news register comes from standard newsroom practice, not from the author's own samples.
+For news, and for any kind of piece this file doesn't cover, follow the writers listed for
+that kind of piece in `craft.md` ("When the author's own samples run out"). Keep the hard
+rules below. When the author's own newspaper pieces turn up, update this table from them.
 
 Rules from the reference register don't all carry over to essays. Two separate budgets:
 
 - **Short rhythmic pair** (in one human-written post: "AI can build. But AI cannot want."):
-  one per essay, at the moment that matters most. None in reference pieces.
+  one per essay, at the point the essay turns on. None in reference pieces.
 - **Contrast frame** ("isn't X. It's Y", "not X but Y", "Not the X. The Y."): none by default,
   in any register. If the reader really holds belief X, one is allowed. Two is a tic.
 

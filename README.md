@@ -18,9 +18,14 @@ puts those sources together with two others that matter more:
   people who use chatbots a lot spot machine text almost perfectly, and they judge the whole
   piece (no point of view, nothing specific, uniform smoothness) rather than single words.
   So the skill fixes the thinking first and the wording second. Sources are in
-  [`references/ai-tells.md`](skills/technical-writer/references/ai-tells.md).
+  [`references/ai-tells.md`](skills/technical-writer/references/ai-tells.md). It also covers
+  the phrases current models overuse, from Graphite's October 2026 study: "this matters",
+  "why X matters" and "looking ahead". Em dashes are no longer the main sign.
 - **My own voice and the edits I keep making by hand,** taken from revisions I asked for on
-  AI drafts. See [`references/voice.md`](skills/technical-writer/references/voice.md).
+  AI drafts. See [`references/voice.md`](skills/technical-writer/references/voice.md). Where
+  my samples don't cover a kind of piece, such as news reports, READMEs and release notes,
+  the skill follows writers who do it well. They are listed in
+  [`references/craft.md`](skills/technical-writer/references/craft.md).
 
 I disclose AI involvement on everything I publish, so the skill isn't trying to fool anyone.
 It adds a one-line disclosure and still holds the prose to a human standard.

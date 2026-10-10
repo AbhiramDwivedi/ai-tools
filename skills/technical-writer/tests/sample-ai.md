@@ -11,3 +11,5 @@ The result? Fewer bugs, faster iteration, and happier developers. It's not about
 - **Clarity:** Everyone knows what to expect from the model.
 
 Ultimately, structured outputs serve as a testament to how far the field has come. The one thing to remember: the schema is only the beginning.
+
+Why structured outputs matter for dependable systems. This matters because looking ahead, schemas can help you avoid one of the most common failures.

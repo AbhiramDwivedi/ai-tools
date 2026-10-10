@@ -22,7 +22,9 @@ an empty draft doesn't work.
 - `references/ai-tells.md`: catalog of AI-prose tells with research sources, and fixes that
   backfire. Read it when revising or reviewing.
 - `references/craft.md`: Zinsser, Google style, and the moves of writers worth copying
-  (Fowler, Julia Evans, Dan Luu and others). Read it when drafting from scratch.
+  (Fowler, Julia Evans, Dan Luu and others), plus a table of model writers for each kind of
+  piece. Read it when drafting from scratch, and whenever the piece is a kind `voice.md`
+  doesn't cover.
 - `scripts/tells.py`: a stdlib Python linter for the mechanical tells. Run it on every draft:
   `python <this-skill-dir>/scripts/tells.py path/to/draft.md` (or pipe text with `-`).
 
@@ -50,6 +52,9 @@ wrong guess would waste the whole draft.
   specific events, numbers, people, products or first-hand experience, and list the TODOs at
   the end. If a piece would be mostly TODOs, write it from what is known and say what's
   missing; don't hand back a skeleton.
+- **A closed brief.** When the user says to use only the facts given, that wins over the
+  common-knowledge allowance above. Arithmetic on the given facts is fine (a difference, a
+  percentage), as long as it is correct and you could show the working.
 
 ### 2. Draft
 
@@ -58,7 +63,9 @@ wrong guess would waste the whole draft.
 - Each paragraph does one job. Its first sentence says what that job is.
 - Name things: the tool, the number, the person or team, the error text. One real example
   beats three abstractions. An abstraction comes after the example that earned it.
-- Take positions. When it really depends, say on what, and which way you lean.
+- Take positions. When it really depends, say on what, and which way you lean. In a news
+  report the position is the news judgement (what leads, what is left out), not an opinion
+  in the text.
 - Show reasoning, including the wrong turn ("I assumed the cache was stale. It wasn't.").
 - Write the plainest sentence that is true. Prefer a verb with a subject to a noun phrase
   ("we made the query faster", not "the optimization of query performance").
@@ -101,7 +108,11 @@ offenders, worst first:
 6. Colon reveals and fake suspense ("The result? ..."). Write the sentence straight.
 7. Em dashes: none in the author's work. Rewrite the sentence; don't swap in a colon or
    semicolon.
-8. AI vocabulary, intensifiers, copula dodges ("serves as"), hedge stacks, vague "This",
+8. Current-model stock phrases (Opus 5.5 era): "this matters", "why X matters", "matters
+   most", "looking ahead", "what comes next", "adds another layer", "rather than simply",
+   helpfulness pitches ("can help you", "makes it easier") and superlatives ("one of the
+   most"). These have replaced the em dash as the commonest tell, so check headings too.
+9. AI vocabulary, intensifiers, copula dodges ("serves as"), hedge stacks, vague "This",
    triads that aren't really three things, Title Case headings, bold-led bullet stacks.
 
 **Pass C: voice and ear.** Read it as the author would.
@@ -125,7 +136,7 @@ already has a convention, end the piece with one plain, italic line that matches
 - Reference/docs: *Drafted with AI assistance and reviewed by the author.*
 - News/column: *This article was prepared with the help of AI tools and edited by the author.*
 
-Keep it to one sentence. No apology, no hype, no naming of models unless asked. The line
+Keep it to one short line. No apology, no hype, no naming of models unless asked. The line
 describes the piece as published, after the author's edit, so don't change it to "review
 pending". Disclosure doesn't excuse slop; the rest of the piece still has to pass every
 check above.
@@ -137,7 +148,8 @@ check above.
   could not verify.
 - When revising someone's draft, add a short list of the main kinds of change you made (not
   every edit), so the author can push back on a pattern. Keep sentences of theirs that were
-  already good; don't rewrite for the sake of it.
+  already good; don't rewrite for the sake of it. When a source sentence doesn't make sense,
+  write what it most likely meant and say so in the hand-back.
 - For a review-only request, return findings as: quote, problem, suggested rewrite. Lead with
   the substance problems, then the tells.
 - Don't praise the draft or your own edits.
@@ -148,4 +160,6 @@ check above.
 2. Then the user's explicit instructions for this piece.
 3. Then the target's house style (for example a project's `voice-and-style.md` or linter).
 4. Then `references/voice.md`.
-5. Then Google style for reference docs and how-to steps, Zinsser for everything else.
+5. Where `voice.md` has nothing to say, the writers listed in `references/craft.md` for that
+   kind of piece.
+6. Then Google style for reference docs and how-to steps, Zinsser for everything else.

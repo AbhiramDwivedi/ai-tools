@@ -19,3 +19,7 @@ Guidance for agents (Claude Code, Codex and others) working in this repo.
   the anti-samples there come from real drafts and would leak the answer.
 - Known gaps in `tells.py`: it can't see structural sameness, missing point of view, or
   invented specifics. Those are the skill's job, not the linter's.
+  By design it also skips short double-quoted phrases (a mention of a tell, not a use) and
+  the italic AI-disclosure line, so a tell inside quoted dialogue goes unflagged.
+- Model-specific tells move with each model release. When adding a new list, cite the study
+  and its caveats in `references/ai-tells.md`, as the Graphite section does.

@@ -31,10 +31,14 @@ showcases showcasing boasts commendable invaluable enhance enhances
 enduring profound transformative groundbreaking interplay navigate
 navigating bustling nestled garner garnered align aligns resonate
 resonates intrinsic noteworthy comprehensive utilize utilizes
+dependable thoughtful meaningful
 """.split()
 
 # (label, regex). Case-insensitive. Keep these specific; vague patterns
 # produce noise and train the writer to ignore the report.
+INTENSIFIER = ("intensifier", r"\b(?:very|really|truly|incredibly|remarkably|deeply|profoundly|undeniably|"
+     r"genuine|genuinely|fundamentally|simply|clearly|obviously|vastly)\b")
+
 PATTERNS = [
     ("em/en dash", r"[—–]| -- "),
     ("narrated significance",
@@ -68,7 +72,7 @@ PATTERNS = [
      r"in today's (?:\w+ )?(?:world|landscape|age|era))\b"),
     ("copula avoidance (serves as / stands as)", r"\b(?:serves|stands|acts|functions) as (?:a|an|the)\b"),
     ("inflated role", r"\bplays? an? (?:crucial|pivotal|key|vital|significant|important|central) role\b|"
-     r"\b(?:fundamental|paradigm|seismic) shift\b|\bsets the stage\b|\breshap(?:es|ing) the\b"),
+     r"\b(?:fundamental|paradigm|seismic) shift\b|\bsets the stage\b|\breaps? (?:the )?(?:rewards|benefits)\b|\breshap(?:es|ing) the\b"),
     ("testament / legacy talk", r"\b(?:a testament to|stands as a|leaves? a lasting|rich (?:history|tapestry))\b"),
     ("trailing -ing analysis", r",\s(?:highlighting|underscoring|emphasizing|reflecting|showcasing|"
      r"demonstrating|illustrating|signaling|ensuring|cementing|solidifying|paving|"
@@ -83,11 +87,20 @@ PATTERNS = [
      r"I'd be happy to|feel free to|let me know if)\b"),
     ("engagement-bait closer", r"\b(?:I'd love to hear|what do you think\?|let me know in the comments|"
      r"share your (?:thoughts|experience)|drop a comment)"),
-    ("intensifier", r"\b(?:very|really|truly|incredibly|remarkably|deeply|profoundly|undeniably|"
-     r"genuine|genuinely|fundamentally|simply|clearly|obviously|vastly)\b"),
+    # Opus 5.5-era tells (Graphite, Oct 2026).
+    ("'matters' frame", r"\b(?:this|that|it) matters\b|\bwhy (?:\w+ ){1,3}matters?\b|"
+     r"\bmatters (?:most|enormously|more than)\b|\bwhat matters (?:is|here|most)\b"),
+    ("forecast/next-step frame", r"\blooking ahead\b|\bwhat comes next\b|\badds? another layer\b|"
+     r"\bjust as important\b|\brather than simply\b|\b(?:is|are) more than (?:a|an|just)\b"),
+    ("helpfulness pitch", r"\b(?:can help you|helps you (?:avoid|stay|get|make|keep)|makes it easier|"
+     r"is especially (?:helpful|useful))\b"),
+    ("superlative", r"\b(?:one of the (?:best|most)|perhaps the most|the most (?:powerful|popular|important|"
+     r"effective|significant))\b"),
     ("everyday/key/real-world filler", r"\b(?:key (?:takeaways?|insights?|considerations?)|"
      r"real-world (?:applications?|scenarios?|examples?)|best practices)\b"),
 ]
+
+PATTERNS.append(INTENSIFIER)
 
 TRIAD = re.compile(r"\b\w+(?: \w+)?, \w+(?: \w+)?,? and \w+(?: \w+)?\b")
 BOLD_BULLET = re.compile(r"^\s*(?:[-*+]|\d+\.)\s+\*\*[^*]+\*\*")
@@ -115,7 +128,12 @@ def strip_noise(text):
         if in_fence or line.startswith("    ") or s.startswith("<"):
             out.append("")
             continue
+        if re.fullmatch(r"\*[^*]*\bAI\b[^*]*\*", s):
+            out.append("")  # the disclosure line is required wording, not prose
+            continue
         line = re.sub(r"`[^`]*`", "CODE", line)
+        # A short quoted phrase is a mention of a tell, not a use of it.
+        line = re.sub(r'"[^"\n]{1,60}"|\u201c[^\u201d\n]{1,60}\u201d', '"Q"', line)
         line = re.sub(r"\]\([^)]*\)", "]", line)
         line = re.sub(r"https?://\S+", "URL", line)
         out.append(line)
@@ -145,13 +163,13 @@ def stubs(lines):
     """Verbless 1-3 word sentences right after a long one: the performed fragment."""
     found = []
     for n, line in enumerate(lines, 1):
-        if HEADING.match(line) or BULLET.match(line):
+        if HEADING.match(line) or BULLET.match(line) or line.lstrip().startswith("|"):
             continue
         parts = re.split(r"(?<=[.!?])\s+", line.strip())
         for prev, cur in zip(parts, parts[1:]):
             words = cur.rstrip(".!?").split()
             if 1 <= len(words) <= 3 and len(prev.split()) >= 12 and cur.endswith(".") \
-                    and not re.search(r"\b(?:is|are|was|were|do|does|did|has|had|can|will|"
+                    and not re.search(r"\b(?:is|are|was|were|do|does|did|has|had|can|will|\w+n\'t|"
                                       r"\w+ed|\w+s)\b", cur.lower()):
                 found.append({"line": n, "kind": "stubby fragment after a long sentence",
                               "text": cur[:90]})
@@ -168,7 +186,7 @@ def is_title_case(h):
 
 def analyse(text):
     lines = strip_noise(text)
-    body = "\n".join(lines)
+    body = "\n".join(l for l in lines if not HEADING.match(l))
     nwords = max(1, len(re.findall(r"\b\w+\b", body)))
     per_k = lambda n: round(n * 1000 / nwords, 1)
     hits = []
