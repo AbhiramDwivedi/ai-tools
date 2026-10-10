@@ -24,7 +24,7 @@ thinking first and the sentences second.
 |---|---|---|
 | No position | Every claim is balanced, hedged or "it depends". The piece ends neutral. | Preference tuning rewards safe answers. Heavy LLM use is linked to more essays that take no side (Abdulhai et al. 2026, unverified) [Q-ish] |
 | Generic over particular | "many teams", "various tools", "significant improvements" where a person would name the team, the tool and the number. | The model averages over many possible texts; particulars are rare in the average. [E] |
-| Sameness | Different prompts produce the same structure, the same moves and the same closing line. | Instruction tuning, not base models, makes co-written essays converge (Padmakumar & He 2024) [Q] |
+| Sameness | Different prompts produce the same structure, the same moves and the same closing line. The skeleton gives it away even when every sentence is clean: claim, example, list of three, caveats, closing rule. | Instruction tuning, not base models, makes co-written essays converge (Padmakumar & He 2024) [Q] |
 | Uniform smoothness | Every sentence is grammatical, mid-length and the same register. There are no rough edges, asides or changes of pace. | Lower variation in sentence length and structure than human text (2023 study; weaker evidence) [Q, weak] |
 | Low density | Three sentences say what one would. The paragraph restates the heading, makes the point, then restates the point. | [E] |
 | Templates | The same part-of-speech skeletons recur ("X is not just Y; it is Z that W"). 76% of templates in model output also appear in pretraining data, vs 35% for human text, and RLHF does not remove them (Shaib et al. 2024). | [Q] |

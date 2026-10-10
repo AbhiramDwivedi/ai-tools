@@ -51,13 +51,18 @@ PATTERNS = [
      r"\b(?:it|this|that)(?:'s| is)(?: not|n't)\b[^.?!]{1,60}[.;,—–-]\s*(?:it|this|that)(?:'s| is)\b"),
     ("negative parallelism (X isn't Y. It's Z)",
      r"\b(?:is|are|was|were)n't (?:just |about |only |merely )?[^.?!]{1,60}[.;]\s+"
-     r"(?:it|they|this|that)(?:'s|'re| is| are)\b"),
+     r"(?:it|they|this|that)(?:'s|'re| is| are| was| were)\b"),
+    ("contrast fragment (Not the X. The Y.)",
+     r"(?:^|[.!?]\s+)Not (?:the|a|an) [^.?!]{1,40}\.\s+(?:The|A|An|It)\b"),
+    ("contrast pair (One is X. The other is Y.)", r"\bOne is\b[^.?!]{1,60}\.\s+The other is\b"),
     ("fake suspense (The X? Y.)",
      r"(?:^|[.!]\s+)(?:The|And the|So the) \w+(?: \w+)?\?\s+[A-Z]"),
-    ("signposting", r"\b(?:here's (?:the thing|why|how|what)|let's (?:dive|break|unpack|explore|take a look)|"
+    ("signposting", r"\b(?:here's (?:the thing|why|how|what|the (?:part|bit|kicker|catch|twist))|let's (?:dive|break|unpack|explore|take a look)|"
      r"buckle up|without further ado|in this (?:post|article|guide),? (?:we|I)(?:'ll| will))\b"),
     ("summary closer", r"\b(?:in conclusion|in summary|to sum up|the bottom line|at the end of the day|"
      r"ultimately(?=,)|all in all)\b"),
+    ("filler", r"\b(?:in order to|due to the fact|at this point in time|in the event that|"
+     r"that said|the ability to)\b"),
     ("throat-clearing", r"\b(?:it(?:'s| is) (?:worth noting|important to note|important to remember|"
      r"crucial to)|it should be noted|needless to say|when it comes to|at its core|"
      r"in today's (?:\w+ )?(?:world|landscape|age|era))\b"),
@@ -76,8 +81,10 @@ PATTERNS = [
      r"\bit could be argued\b|\bto some extent\b"),
     ("chat residue", r"\b(?:I hope this helps|great question|certainly!|absolutely!|as an AI|"
      r"I'd be happy to|feel free to|let me know if)\b"),
-    ("intensifier", r"\b(?:truly|incredibly|remarkably|deeply|profoundly|undeniably|"
-     r"genuinely|fundamentally)\b"),
+    ("engagement-bait closer", r"\b(?:I'd love to hear|what do you think\?|let me know in the comments|"
+     r"share your (?:thoughts|experience)|drop a comment)"),
+    ("intensifier", r"\b(?:very|really|truly|incredibly|remarkably|deeply|profoundly|undeniably|"
+     r"genuine|genuinely|fundamentally|simply|clearly|obviously|vastly)\b"),
     ("everyday/key/real-world filler", r"\b(?:key (?:takeaways?|insights?|considerations?)|"
      r"real-world (?:applications?|scenarios?|examples?)|best practices)\b"),
 ]
@@ -116,10 +123,39 @@ def strip_noise(text):
 
 
 def sentences(lines):
-    prose = " ".join(l for l in lines if l.strip() and not HEADING.match(l)
-                     and not BULLET.match(l) and not l.strip().startswith("|"))
-    parts = re.split(r"(?<=[.!?])\s+(?=[A-Z\"'(])", prose)
-    return [p for p in parts if len(p.split()) >= 3]
+    """Split prose into sentences. Paragraphs and list items are separate blocks, so a list
+    never merges into one long 'sentence'. Headings, tables and TODO markers are skipped."""
+    blocks, cur = [], []
+    for l in lines:
+        s = l.strip()
+        if not s or HEADING.match(l) or s.startswith("|") or s.startswith("[TODO"):
+            blocks.append(" ".join(cur)); cur = []
+        elif BULLET.match(l):
+            blocks.append(" ".join(cur)); cur = [BULLET.sub("", l)]
+        else:
+            cur.append(s)
+    blocks.append(" ".join(cur))
+    out = []
+    for b in blocks:
+        out += re.split(r"(?<=[.!?])\s+(?=[A-Z\"'(])", b)
+    return [p for p in out if len(p.split()) >= 3]
+
+
+def stubs(lines):
+    """Verbless 1-3 word sentences right after a long one: the performed fragment."""
+    found = []
+    for n, line in enumerate(lines, 1):
+        if HEADING.match(line) or BULLET.match(line):
+            continue
+        parts = re.split(r"(?<=[.!?])\s+", line.strip())
+        for prev, cur in zip(parts, parts[1:]):
+            words = cur.rstrip(".!?").split()
+            if 1 <= len(words) <= 3 and len(prev.split()) >= 12 and cur.endswith(".") \
+                    and not re.search(r"\b(?:is|are|was|were|do|does|did|has|had|can|will|"
+                                      r"\w+ed|\w+s)\b", cur.lower()):
+                found.append({"line": n, "kind": "stubby fragment after a long sentence",
+                              "text": cur[:90]})
+    return found
 
 
 def is_title_case(h):
@@ -155,9 +191,10 @@ def analyse(text):
         h = HEADING.match(line)
         if h and not line.startswith("# ") and is_title_case(h.group(1)):
             hits.append({"line": n, "kind": "Title Case heading", "text": h.group(1)[:90]})
-        elif h and re.search(r" (?:Of|The|And|To|In|For|A|An|On|With) ", h.group(1)):
+        elif h and re.search(r"(?<![.!?:]) (?:Of|The|And|To|In|For|A|An|On|With) ", h.group(1)):
             hits.append({"line": n, "kind": "capitalized small word in title", "text": h.group(1)[:90]})
 
+    hits += stubs(lines)
     sents = sentences(lines)
     lens = [len(s.split()) for s in sents]
     stats = {"words": nwords, "sentences": len(lens)}

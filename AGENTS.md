@@ -15,3 +15,7 @@ Guidance for agents (Claude Code, Codex and others) working in this repo.
 - When you change `scripts/tells.py`, re-run it on `skills/technical-writer/tests/sample-ai.md`
   and `tests/sample-human.md` and check the AI sample still lights up and the human one stays
   quiet.
+- When testing the skill end to end, use a draft that `references/voice.md` doesn't quote;
+  the anti-samples there come from real drafts and would leak the answer.
+- Known gaps in `tells.py`: it can't see structural sameness, missing point of view, or
+  invented specifics. Those are the skill's job, not the linter's.

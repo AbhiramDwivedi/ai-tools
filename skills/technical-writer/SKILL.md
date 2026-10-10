@@ -41,7 +41,15 @@ wrong guess would waste the whole draft.
   `references/voice.md` sets person, opening, rhythm and closing for each.
 - **The facts.** List the specifics you have: names, numbers, versions, dates, errors,
   quotes, sources. Get them from the user, the repo or the material provided. **Never invent
-  one** to make the prose feel concrete. Mark gaps as `[TODO: ...]` and list them at the end.
+  one** to make the prose feel concrete: an invented number, reaction, action or quote is
+  worse than a cliché, because it is false. This holds when revising too. Don't swap a vague
+  phrase for a sharper one you have no source for ("stopped me cold" must not become "I read
+  it twice" unless the author did).
+- **What doesn't need a source.** Well-established technical knowledge (what a JSON schema
+  checks, how a cache invalidates) can be stated plainly. Use `[TODO: ...]` for claims about
+  specific events, numbers, people, products or first-hand experience, and list the TODOs at
+  the end. If a piece would be mostly TODOs, write it from what is known and say what's
+  missing; don't hand back a skeleton.
 
 ### 2. Draft
 
@@ -70,10 +78,14 @@ first.
 - Where is the draft generic? Replace "many teams", "various tools", "significant gains" with
   the particular, or cut the sentence.
 - Where does it dodge? Turn balanced non-answers into a position with a reason.
-- Cut about a quarter of the words. Most drafts survive it and get better.
+- Cut what restates, pads or announces. Expect to lose 15 to 30 percent. Keep the author's
+  sentences that already work; the goal is less padding, not a rewrite.
+- Look at the skeleton, not just the sentences. Claim, example, numbered list of three,
+  caveats section, closing rule: that shape is a template a reader recognises. Not every
+  piece needs a list or a "gaps" section. Let the structure follow the argument.
 
-**Pass B: tells.** Run `scripts/tells.py`, then read the draft once more for what a regex
-can't see. Fix by rewriting the sentence, not by swapping a word or a glyph. The usual
+**Pass B: tells.** Run `scripts/tells.py` (if Python can't run in your sandbox, do this pass
+by eye against the list below), then read the draft once more for what a regex can't see. Fix by rewriting the sentence, not by swapping a word or a glyph. The usual
 offenders, worst first:
 1. Contrast framing: "it's not X, it's Y", "isn't X. It's Y", "not just X but Y", "stops X
    and starts Y". State the positive claim.
@@ -81,8 +93,9 @@ offenders, worst first:
    this worth reading", "let's dive in", "in this post we'll". Cut them and make the point.
 3. Trailing "-ing" pseudo-analysis: ", highlighting the importance of...". Delete it or make
    it a real sentence with a subject.
-4. Manufactured closers: the aphorism, the balanced-for-effect line, the "In the end..." moral.
-   Replace with the plain rule or stop a sentence earlier.
+4. Manufactured closers: the aphorism, the balanced-for-effect line, the "In the end..." moral,
+   and engagement bait ("I'd love to hear yours", "What do you think?"). Replace with the
+   plain rule or stop a sentence earlier. Add a call to action only if the author asks.
 5. Stubby performed fragments ("Mostly no." "Pricing shows the gap.") and short punchy pairs.
    Merge them into the sentence they belong to.
 6. Colon reveals and fake suspense ("The result? ..."). Write the sentence straight.
@@ -112,8 +125,10 @@ already has a convention, end the piece with one plain, italic line that matches
 - Reference/docs: *Drafted with AI assistance and reviewed by the author.*
 - News/column: *This article was prepared with the help of AI tools and edited by the author.*
 
-Keep it to one sentence. No apology, no hype, no naming of models unless asked. Disclosure
-doesn't excuse slop; the rest of the piece still has to pass every check above.
+Keep it to one sentence. No apology, no hype, no naming of models unless asked. The line
+describes the piece as published, after the author's edit, so don't change it to "review
+pending". Disclosure doesn't excuse slop; the rest of the piece still has to pass every
+check above.
 
 ### 5. Hand back
 

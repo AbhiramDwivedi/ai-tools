@@ -26,9 +26,17 @@ The news register is inferred from standard newsroom practice, not from the auth
 samples. Ask for a sample of the author's newspaper pieces when one is available and update
 this table.
 
-Rules from the reference register don't all carry over to essays. The blog can use a short
-antithetical pair the reference chapters would cut (in one human-written post: "AI can
-build. But AI cannot want."). Allow one per essay. Never stack them.
+Rules from the reference register don't all carry over to essays. Two separate budgets:
+
+- **Short rhythmic pair** (in one human-written post: "AI can build. But AI cannot want."):
+  one per essay, at the moment that matters most. None in reference pieces.
+- **Contrast frame** ("isn't X. It's Y", "not X but Y", "Not the X. The Y."): none by default,
+  in any register. If the reader really holds belief X, one is allowed. Two is a tic.
+
+A callback ending that returns to the opening image doesn't count against either budget.
+
+Titles: a post's title (the H1) may use headline case, as the author's own posts do. Section
+headings inside the piece use sentence case.
 
 ## What the author consistently changes in AI drafts
 
