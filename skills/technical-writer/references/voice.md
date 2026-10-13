@@ -1,10 +1,10 @@
-# The author's voice
+# Default voice
 
-The author is Ram Dwivedi: a software engineer who has written code professionally since
-2004 and writes the blog *Dabbling in Software* and the reference site
-agentic-engineering.work. This profile comes from the author's published writing, the
-project voice guide, and the revisions the author asked for on AI drafts. The revisions
-matter most, because they show what the author fixes by hand when a draft is wrong.
+Read this file for every task (see "Voice profile" in `SKILL.md`).
+It describes the voice of a careful engineer writing for colleagues. The edits listed below
+come from real revisions of AI drafts, so they are the changes a human editor ends up making
+by hand. Where a personal profile speaks, it wins over this file; `voice-template.md` shows how to
+write one.
 
 ## The register in one line
 
@@ -22,27 +22,25 @@ interested in the fact than in the phrasing.
 | Closing | Call back to the opening image | The rule, stated plainly and actionably | The last relevant fact, or a next event only if a source names it |
 | Links | Few or none | Name the book or author in prose; cite every claim | Attribute every fact to a named source |
 
-The news register comes from standard newsroom practice, not from the author's own samples.
-For news, and for any kind of piece this file doesn't cover, follow the writers listed for
-that kind of piece in `craft.md` ("When the author's own samples run out"). Keep the hard
-rules below. When the author's own newspaper pieces turn up, update this table from them.
+For any kind of piece this table doesn't cover, follow the writers listed for that kind of
+piece in `craft.md` ("When the voice profile runs out"). Keep the hard rules below.
 
 Rules from the reference register don't all carry over to essays. Two separate budgets:
 
-- **Short rhythmic pair** (in one human-written post: "AI can build. But AI cannot want."):
-  one per essay, at the point the essay turns on. None in reference pieces.
+- **Short rhythmic pair** ("AI can build. But AI cannot want."): one per essay, at the point
+  the essay turns on. None in reference pieces.
 - **Contrast frame** ("isn't X. It's Y", "not X but Y", "Not the X. The Y."): none by default,
   in any register. If the reader really holds belief X, one is allowed. Two is a tic.
 
 A callback ending that returns to the opening image doesn't count against either budget.
 
-Titles: a post's title (the H1) may use headline case, as the author's own posts do. Section
-headings inside the piece use sentence case.
+Titles: a post's title (the H1) may use headline case. Section headings inside the piece use
+sentence case.
 
-## What the author consistently changes in AI drafts
+## Edits AI drafts keep needing
 
-These are before/after pairs from revisions the author directed. Make these changes before
-the author has to.
+These before/after pairs come from revisions of AI drafts. Make these changes before a human
+editor has to.
 
 1. **The contrast reflex becomes a plain statement.**
    - Before: "The promise is about shape, not truth."
@@ -83,8 +81,9 @@ the author has to.
 
 ## Hard rules
 
-- **No em dashes or en dashes.** None. Not even one. And don't replace them one for one with
-  colons or semicolons: rewrite the sentence.
+- **Em dashes: avoid them.** Many readers now take them as a machine tell. Don't replace them
+  one for one with colons or semicolons: rewrite the sentence. A personal profile may allow
+  them.
 - Straight quotes, not curly quotes, in Markdown sources.
 - Sentence-case headings. No "Overview", "Introduction", "Conclusion" or "Final thoughts".
 - No invented statistics, quotes, dates or first-hand claims. If a fact isn't sourced, ask
@@ -102,7 +101,7 @@ the author has to.
 
 ## Samples of the target voice
 
-From a reference chapter (AI-assisted, then edited to the house style):
+From an example reference chapter (AI-assisted, then edited by hand):
 
 > Then someone opened the function. It was a dictionary: a handful of keys, and an `else`
 > branch that logged and returned a structured error. Nothing was wrong with the code. What
@@ -113,22 +112,11 @@ From a reference chapter (AI-assisted, then edited to the house style):
 > path first. The dispatch side fails loudly if you build its deny branch. The routing side
 > never will, so instrument it.
 
-From "Thunderstorms and Sunshine", the author's own writing with no AI involved, which sets
-the essay register:
-
-> It's a mid-March morning. Sunny, a little cloudy, with a pleasant breeze in the air.
-
-> That's where we are with AI and software engineering. And I think it's worth talking about
-> honestly.
-
-> The thunderstorms are coming. I'm not going to pretend they won't be disruptive. But
-> tomorrow is going to be a beautiful day.
-
-Reference writers the author patterns against: Martin Fowler ("If I have a terrible area of
-the code base, one that's a nightmare to change, it's not a problem if I don't have to modify
-it.") and Paul Hammant's trunkbaseddevelopment.com ("They therefore avoid merge hell, do not
-break the build, and live happily ever after."). Copy the moves: first person without
-embarrassment, plain informal nouns ("cruft"), a position plus its reason, then stop.
+From writers worth patterning against: Martin Fowler ("If I have a terrible area of the code
+base, one that's a nightmare to change, it's not a problem if I don't have to modify it.") and
+Paul Hammant's trunkbaseddevelopment.com ("They therefore avoid merge hell, do not break the
+build, and live happily ever after."). Copy the moves: first person without embarrassment,
+plain informal nouns ("cruft"), a position plus its reason, then stop.
 
 ## Anti-samples (lines that shipped and had to be cut)
 

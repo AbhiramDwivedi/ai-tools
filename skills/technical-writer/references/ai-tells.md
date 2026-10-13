@@ -91,8 +91,8 @@ Two findings change the advice:
 
 1. **The em dash is no longer the main signal.** Opus 5.5 uses 0.015 per 1,000 words, down
    99% from Opus 5. GPT-6 Astra uses about an eighth of the human rate. A draft with no em
-   dashes can still be machine prose. The author still bans them, but don't count their
-   absence as a pass.
+   dashes can still be machine prose. Avoid them anyway, but don't count their absence as
+   a pass.
 2. **The tells move.** Opus 5 used "is genuinely", "matters enormously" and "remarkably".
    Opus 5.5 mostly dropped those and picked up the helpfulness phrases. Each fix pushes the
    habit somewhere else. That is why the deep tells above come first.

@@ -21,14 +21,15 @@ puts those sources together with two others that matter more:
   [`references/ai-tells.md`](skills/technical-writer/references/ai-tells.md). It also covers
   the phrases current models overuse, from Graphite's October 2026 study: "this matters",
   "why X matters" and "looking ahead". Em dashes are no longer the main sign.
-- **My own voice and the edits I keep making by hand,** taken from revisions I asked for on
-  AI drafts. See [`references/voice.md`](skills/technical-writer/references/voice.md). Where
-  my samples don't cover a kind of piece, such as news reports, READMEs and release notes,
-  the skill follows writers who do it well. They are listed in
-  [`references/craft.md`](skills/technical-writer/references/craft.md).
+- **A voice, and the edits that AI drafts keep needing,** taken from revisions of real AI
+  drafts. The default is in
+  [`references/voice.md`](skills/technical-writer/references/voice.md). You can give the
+  skill your own voice instead (see below). Where the voice doesn't cover a kind of piece,
+  such as news reports, READMEs and release notes, the skill follows writers who do it well.
+  They are listed in [`references/craft.md`](skills/technical-writer/references/craft.md).
 
-I disclose AI involvement on everything I publish, so the skill isn't trying to fool anyone.
-It adds a one-line disclosure and still holds the prose to a human standard.
+The skill isn't meant to fool anyone. It adds a one-line disclosure when you or the publication
+disclose AI help, offers one otherwise, and it holds the prose to a human standard either way.
 
 It also ships a linter for the mechanical tells (contrast framing, narrated significance,
 trailing "-ing" clauses, em dashes, AI vocabulary, uniform sentence length and more). It needs
@@ -68,9 +69,15 @@ With links, a `git pull` updates the installed skill.
 - Codex: `$technical-writer` or mention the skill by name, or let it trigger by description.
 - Any other agent: point it at `skills/technical-writer/SKILL.md` and tell it to follow it.
 
-The voice profile is mine. To use the skill for your own writing, replace
-`references/voice.md` with your own: your registers, a few samples, and the edits you keep
-making to AI drafts. The rest of the skill is general.
+### Make it sound like you
+
+The skill works out of the box with its default voice. To make it write like you, put a
+personal profile at `~/.config/technical-writer/voice.md` (on Windows,
+`%USERPROFILE%\.config\technical-writer\voice.md`). Start from the outline in
+[`references/voice-template.md`](skills/technical-writer/references/voice-template.md): your
+registers, a few samples, the edits you keep making to AI drafts, and whether you disclose
+AI help. The profile lives outside the repo, so `git pull` and reinstalling never touch it.
+Where it says nothing, the default voice applies.
 
 ## License
 
