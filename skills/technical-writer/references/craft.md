@@ -33,7 +33,7 @@ scratch or when a revision needs more than deleting tells.
 - No "simply", "just", "easy", "obviously". What's easy for you is the reader's blocker.
 - Use numerals for numbers and include units. "3 retries", "200 ms".
 
-When Google style and the author's voice conflict in an essay, voice wins. In reference docs
+When Google style and the voice profile conflict in an essay, voice wins. In reference docs
 and how-to steps, Google style wins.
 
 ## Writers to learn from (copy the moves, not the sentences)
@@ -56,13 +56,13 @@ and how-to steps, Google style wins.
 The common thread: a specific person who did a specific thing and has a view about it. That
 is the part a model can't fake and the part a reader is looking for.
 
-## When the author's own samples run out
+## When the voice profile runs out
 
-`voice.md` comes from a few essays and one reference site. When a task needs something it
-doesn't cover, such as a news story, a README, a talk abstract or a register it doesn't
-describe, copy the writers below for that kind of piece. The author's hard rules still apply
-(no dashes, no invented facts, sentence-case headings). This list fills gaps in `voice.md`;
-it doesn't override it.
+A voice profile, default or personal, can't cover every kind of piece. When a task needs
+something it doesn't cover, such as a news story, a README, a talk abstract or a register it doesn't
+describe, copy the writers below for that kind of piece. The profile's hard rules still apply
+(no invented facts, sentence-case headings, and the rest). This list fills gaps in the
+profile; it doesn't override it.
 
 | Kind of piece | Writers to copy | The moves |
 |---|---|---|

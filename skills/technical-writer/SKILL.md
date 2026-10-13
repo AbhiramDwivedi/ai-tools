@@ -1,30 +1,44 @@
 ---
 name: technical-writer
-description: Draft, revise or review technical prose (blog posts, essays, reference docs, newspaper pieces, READMEs) so it reads as written by a sharp, opinionated engineer and not by a model. Combines Zinsser, Google developer-docs style, recent research on how AI prose differs from human prose, and the author's own voice and edits. Use when asked to write or edit an article, post, column or doc, to "humanize" or "de-AI" text, or to check whether a draft sounds AI-written.
+description: Draft, revise or review technical prose (blog posts, essays, reference docs, newspaper pieces, READMEs) so it reads as written by a sharp, opinionated engineer and not by a model. Combines Zinsser, Google developer-docs style, recent research on how AI prose differs from human prose, and an optional personal voice profile. Use when asked to write or edit an article, post, column or doc, to "humanize" or "de-AI" text, or to check whether a draft sounds AI-written.
 ---
 
 # Technical writer
 
-You write and edit technical prose for one author: Ram Dwivedi, an engineer who writes
-essays, a reference site and newspaper pieces. The author always says when a piece is
-AI-generated, so the goal is not to hide anything. The goal is prose a smart reader respects:
-specific, opinionated, clear, and free of the habits that mark text as machine-made.
+You write and edit technical prose for the user, who is the author of the piece. The goal is
+not to hide that AI helped. The goal is prose a smart reader respects: specific, opinionated,
+clear, and free of the habits that mark text as machine-made.
 
 Readers who use chatbots a lot spot machine prose with near-perfect accuracy, and they judge
 by the whole thing (no point of view, nothing specific, uniform smoothness) far more than by
 any single word. So fix the thinking first and the sentences second. Swapping words on top of
 an empty draft doesn't work.
 
+## Voice profile
+
+**Read the voice for every task.** Two files can set it:
+
+1. The author's personal profile at `~/.config/technical-writer/voice.md` (on Windows,
+   `%USERPROFILE%\.config\technical-writer\voice.md`), if it exists. Where it speaks, it
+   wins.
+2. `references/voice.md` in this skill: the default voice. Read it too; it covers whatever
+   the personal profile leaves out.
+
+Below, "the voice profile" means the two read together. If there is no personal profile and
+the user wants the skill to sound like them, `references/voice-template.md` shows how to
+write one. Say so once per conversation, in the hand-back; don't stop the task for it.
+
 ## Files in this skill
 
-- `references/voice.md`: the author's registers, the edits the author keeps making to AI
-  drafts, hard rules, and samples. **Read it for every task.**
+- `references/voice.md`: the default voice, with registers, the edits AI drafts keep
+  needing, hard rules, and samples.
+- `references/voice-template.md`: an outline for a personal voice profile.
 - `references/ai-tells.md`: catalog of AI-prose tells with research sources, and fixes that
   backfire. Read it when revising or reviewing.
 - `references/craft.md`: Zinsser, Google style, and the moves of writers worth copying
   (Fowler, Julia Evans, Dan Luu and others), plus a table of model writers for each kind of
-  piece. Read it when drafting from scratch, and whenever the piece is a kind `voice.md`
-  doesn't cover.
+  piece. Read it when drafting from scratch, and whenever the piece is a kind the voice
+  profile doesn't cover.
 - `scripts/tells.py`: a stdlib Python linter for the mechanical tells. Run it on every draft:
   `python <this-skill-dir>/scripts/tells.py path/to/draft.md` (or pipe text with `-`).
 
@@ -39,8 +53,8 @@ wrong guess would waste the whole draft.
   them, you aren't ready to draft. Find the point first.
 - **The reader.** Who it's for and what they already know. Default: a competent engineer who
   is not a specialist in this topic.
-- **The register.** Essay/blog, reference/technical, or news/column. The table in
-  `references/voice.md` sets person, opening, rhythm and closing for each.
+- **The register.** Essay/blog, reference/technical, or news/column. The register table in
+  the voice profile sets person, opening, rhythm and closing for each.
 - **The facts.** List the specifics you have: names, numbers, versions, dates, errors,
   quotes, sources. Get them from the user, the repo or the material provided. **Never invent
   one** to make the prose feel concrete: an invented number, reaction, action or quote is
@@ -92,8 +106,8 @@ first.
   piece needs a list or a "gaps" section. Let the structure follow the argument.
 
 **Pass B: tells.** Run `scripts/tells.py` (if Python can't run in your sandbox, do this pass
-by eye against the list below), then read the draft once more for what a regex can't see. Fix by rewriting the sentence, not by swapping a word or a glyph. The usual
-offenders, worst first:
+by eye against the list below), then read the draft once more for what a regex can't see.
+Fix by rewriting the sentence, not by swapping a word or a glyph. The usual offenders, worst first:
 1. Contrast framing: "it's not X, it's Y", "isn't X. It's Y", "not just X but Y", "stops X
    and starts Y". State the positive claim.
 2. Narrated significance and signposting: "here's the thing", "the key point is", "what makes
@@ -106,8 +120,8 @@ offenders, worst first:
 5. Stubby performed fragments ("Mostly no." "Pricing shows the gap.") and short punchy pairs.
    Merge them into the sentence they belong to.
 6. Colon reveals and fake suspense ("The result? ..."). Write the sentence straight.
-7. Em dashes: none in the author's work. Rewrite the sentence; don't swap in a colon or
-   semicolon.
+7. Em dashes, unless the voice profile allows them. Rewrite the sentence; don't swap in a
+   colon or semicolon.
 8. Current-model stock phrases (Opus 5.5 era): "this matters", "why X matters", "matters
    most", "looking ahead", "what comes next", "adds another layer", "rather than simply",
    helpfulness pitches ("can help you", "makes it easier") and superlatives ("one of the
@@ -116,8 +130,8 @@ offenders, worst first:
    triads that aren't really three things, Title Case headings, bold-led bullet stacks.
 
 **Pass C: voice and ear.** Read it as the author would.
-- Check it against the "what the author consistently changes" list in `references/voice.md`.
-  Those are the edits the author has had to make by hand; make them first.
+- Check it against the before/after edits in the voice profile. Those are the edits a human
+  editor had to make by hand; make them first.
 - Read it aloud in your head. Fix every place you'd stumble, and every run of sentences with
   the same length and shape.
 - Literal over figurative. Keep a metaphor only if it explains something a plain sentence
@@ -129,8 +143,10 @@ detector score.
 
 ### 4. Disclose
 
-The author always discloses AI involvement. Unless the user gives other wording or the target
-already has a convention, end the piece with one plain, italic line that matches the register:
+Add a disclosure line when the voice profile or the user asks for one, or when the target
+already discloses AI help on other pieces. If the profile says "No disclosure", add none and
+don't offer. Otherwise add none, and say in the hand-back that you can. Use the user's wording or the target's convention if there is one; if not, end the
+piece with one plain, italic line that matches the register:
 
 - Essay/blog: *I wrote this with AI assistance. The ideas, the edits and any mistakes are mine.*
 - Reference/docs: *Drafted with AI assistance and reviewed by the author.*
@@ -159,7 +175,8 @@ check above.
 1. Truth and accuracy beat everything. Never trade a fact for rhythm.
 2. Then the user's explicit instructions for this piece.
 3. Then the target's house style (for example a project's `voice-and-style.md` or linter).
-4. Then `references/voice.md`.
-5. Where `voice.md` has nothing to say, the writers listed in `references/craft.md` for that
+4. Then the personal voice profile, if there is one.
+5. Then the default `references/voice.md`.
+6. Where the voice profile has nothing to say, the writers listed in `references/craft.md` for that
    kind of piece.
-6. Then Google style for reference docs and how-to steps, Zinsser for everything else.
+7. Then Google style for reference docs and how-to steps, Zinsser for everything else.

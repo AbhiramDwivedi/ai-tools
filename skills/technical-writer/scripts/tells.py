@@ -129,7 +129,7 @@ def strip_noise(text):
             out.append("")
             continue
         if re.fullmatch(r"\*[^*]*\bAI\b[^*]*\*", s):
-            out.append("")  # the disclosure line is required wording, not prose
+            out.append("")  # an AI-disclosure line is set wording, not prose
             continue
         line = re.sub(r"`[^`]*`", "CODE", line)
         # A short quoted phrase is a mention of a tell, not a use of it.
@@ -239,7 +239,7 @@ def analyse(text):
         warnings.append("Sentence lengths are uniform (variation < 0.40). Human prose mixes "
                         "short and long sentences; vary the rhythm where the content allows.")
     if stats["em_dashes_per_1k"] > 0:
-        warnings.append("Em dashes present. The house style uses none: rewrite each sentence. "
+        warnings.append("Em dashes present. Unless your style allows them, rewrite each sentence. "
                         "Don't swap them for semicolons or colons; that keeps the same rhythm.")
     semis, colons = body.count(";"), len(re.findall(r"[a-z]: [a-z]", body))
     if (semis >= 3 and stats["semicolons_per_1k"] > 4) or (colons >= 3 and stats["colons_in_prose_per_1k"] > 6):
