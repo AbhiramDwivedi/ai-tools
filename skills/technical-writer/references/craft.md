@@ -1,8 +1,9 @@
 # Craft: the rules worth keeping, and the writers worth copying
 
-This file condenses three sources into rules you can apply while drafting, then describes the
-moves of writers whose technical prose reads as human and smart. Use it when drafting from
-scratch or when a revision needs more than deleting tells.
+This file condenses two books and a style guide (Zinsser, Google style, *Clarity*) into
+rules you can apply while drafting, adds rules for diagrams, then describes the moves of
+writers whose technical prose reads as human and smart. Use it when drafting from scratch or
+when a revision needs more than deleting tells.
 
 ## Zinsser (On Writing Well), applied to technical writing
 
@@ -35,6 +36,73 @@ scratch or when a revision needs more than deleting tells.
 
 When Google style and the voice profile conflict in an essay, voice wins. In reference docs
 and how-to steps, Google style wins.
+
+## *Clarity*: making the logic visible
+
+These rules come from the book *Clarity*. They cover the joins between sentences and
+between paragraphs, which a draft can get wrong while every sentence in it is fine.
+
+- **Say how sentences relate.** Use a connector: "because", "so", "but", "although". Two
+  sentences set side by side leave the reader to guess whether the second is a cause, a
+  result or an exception, and different readers guess differently.
+- **Chain the paragraphs.** Each paragraph follows from the one before and sets up the next.
+  To test it, cover the rest of the page after a paragraph and try to predict the next one.
+  If you can't, the reader can't either.
+- **Give the strongest objection its own paragraph.** State it as well as someone who holds
+  it would, then answer it. Tucked into a clause, an objection reads as dodged.
+- **Name who did it.** "The migration was rolled back" hides the team that decided. Write
+  "the platform team rolled back the migration". If you don't know who, mark a TODO and ask,
+  because the passive only hides the gap.
+- **When you revise, reorder as well as cut.** A draft often has the right sentences in the
+  wrong order, with the conclusion in the last paragraph or the example ahead of its claim.
+  Move them before you trim them.
+- **Interview the author when TODOs would outnumber facts.** Ask for the missing names,
+  numbers and events before drafting, because a draft built on placeholders guesses its
+  structure in advance and the facts that arrive later rarely fit it.
+
+The book's advice doesn't override the opening rule in `SKILL.md`: open with the claim or a
+scene, never with a question.
+
+## Diagrams
+
+Good software needs some documentation for humans, and part of it is easier to draw than to
+write.
+
+- **When a diagram earns its place.** Draw one for structure, flow or sequence that prose
+  could carry only with a paragraph of cross-references ("the worker reads the queue the API
+  writes to, which..."). A diagram never repeats what the prose beside it already says.
+- **C4 levels for software and architecture docs.** Start with a context diagram: the system,
+  its users and the external systems it talks to. Add a container diagram for the units you
+  deploy or run and how they talk to each other. Draw a component diagram only where a
+  module's internals matter to the reader. For a protocol or a multi-step flow, use a
+  sequence diagram.
+- **Mermaid in Markdown by default.** GitHub renders it, and it diffs as text in review.
+  Mermaid has `C4Context` and `C4Container` types, but its own docs call C4 experimental, and
+  an open issue (mermaid-js/mermaid#7358, checked October 2026) shows GitHub rendering them
+  with oversized padding, clipped boxes and crossed relations. So use `flowchart` with
+  C4-style labels: name, [type], one-line responsibility. Use `sequenceDiagram` for
+  sequences.
+- **Rules for every diagram.** Label every box and every arrow, and make each arrow say what
+  flows ("orders, JSON over HTTPS"). Keep it to about 12 nodes. One diagram answers one
+  question, so split one that tries to answer two. Give each a one-line caption saying what it
+  shows.
+- **Keep it true.** Derive the diagram from the code or config, not from memory, and name the
+  source files in the caption or in a `%%` comment. A diagram nobody can trace to the code
+  goes stale without anyone noticing.
+
+```mermaid
+flowchart LR
+  %% Source: docker-compose.yml, api/routes.py
+  user["Reader<br/>[person]<br/>Browses and searches posts"]
+  web["Web app<br/>[container: Next.js]<br/>Renders pages"]
+  api["API<br/>[container: FastAPI]<br/>Serves posts and search"]
+  db[("Posts DB<br/>[container: Postgres]<br/>Stores posts")]
+  user -->|"page requests, HTTPS"| web
+  web -->|"post and search queries, JSON"| api
+  api -->|"SQL reads"| db
+```
+
+*Containers of a small blog: what runs and what each part sends to the next.*
 
 ## Writers to learn from (copy the moves, not the sentences)
 

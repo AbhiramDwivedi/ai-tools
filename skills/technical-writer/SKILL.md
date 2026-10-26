@@ -35,9 +35,9 @@ write one. Say so once per conversation, in the hand-back; don't stop the task f
 - `references/voice-template.md`: an outline for a personal voice profile.
 - `references/ai-tells.md`: catalog of AI-prose tells with research sources, and fixes that
   backfire. Read it when revising or reviewing.
-- `references/craft.md`: Zinsser, Google style, and the moves of writers worth copying
-  (Fowler, Julia Evans, Dan Luu and others), plus a table of model writers for each kind of
-  piece. Read it when drafting from scratch, and whenever the piece is a kind the voice
+- `references/craft.md`: Zinsser, Google style, *Clarity*, rules for diagrams, and the moves
+  of writers worth copying (Fowler, Julia Evans, Dan Luu and others), plus a table of model
+  writers for each kind of piece. Read it when drafting from scratch, and whenever the piece is a kind the voice
   profile doesn't cover.
 - `scripts/tells.py`: a stdlib Python linter for the mechanical tells. Run it on every draft:
   `python <this-skill-dir>/scripts/tells.py path/to/draft.md` (or pipe text with `-`).
@@ -64,17 +64,23 @@ wrong guess would waste the whole draft.
 - **What doesn't need a source.** Well-established technical knowledge (what a JSON schema
   checks, how a cache invalidates) can be stated plainly. Use `[TODO: ...]` for claims about
   specific events, numbers, people, products or first-hand experience, and list the TODOs at
-  the end. If a piece would be mostly TODOs, write it from what is known and say what's
-  missing; don't hand back a skeleton.
+  the end. If TODOs would outnumber facts, interview the author before drafting: ask for the
+  missing specifics in one short list. If they can't supply them, write from what is known
+  and say what's missing; don't hand back a skeleton.
 - **A closed brief.** When the user says to use only the facts given, that wins over the
   common-knowledge allowance above. Arithmetic on the given facts is fine (a difference, a
   percentage), as long as it is correct and you could show the working.
 
 ### 2. Draft
 
-- Open with the claim or a concrete scene. Never with context-setting or a definition of the
-  obvious.
+- Open with the claim or a concrete scene. Never with a question, context-setting or a
+  definition of the obvious.
 - Each paragraph does one job. Its first sentence says what that job is.
+- Make the logic explicit. Join related sentences with "because", "so" or "but", and chain
+  each paragraph to the next (details in `references/craft.md`, under *Clarity*).
+- Name who did it: the person or team, in the active voice.
+- Draw a diagram where structure or flow would need a paragraph of cross-references.
+  `references/craft.md` covers when, C4 levels and mermaid.
 - Name things: the tool, the number, the person or team, the error text. One real example
   beats three abstractions. An abstraction comes after the example that earned it.
 - Take positions. When it really depends, say on what, and which way you lean. In a news
@@ -98,9 +104,12 @@ first.
 - Does every paragraph earn its place? Cut the ones that restate.
 - Where is the draft generic? Replace "many teams", "various tools", "significant gains" with
   the particular, or cut the sentence.
-- Where does it dodge? Turn balanced non-answers into a position with a reason.
+- Where does it dodge? Turn balanced non-answers into a position with a reason. Give the
+  strongest objection its own paragraph and answer it.
 - Cut what restates, pads or announces. Expect to lose 15 to 30 percent. Keep the author's
   sentences that already work; the goal is less padding, not a rewrite.
+- Reorder as well as cut. Cover the page below each paragraph and try to predict the next
+  one. Where you can't, move paragraphs until you can.
 - Look at the skeleton, not just the sentences. Claim, example, numbered list of three,
   caveats section, closing rule: that shape is a template a reader recognises. Not every
   piece needs a list or a "gaps" section. Let the structure follow the argument.
